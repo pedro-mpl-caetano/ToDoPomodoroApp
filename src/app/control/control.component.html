@@ -1,0 +1,14 @@
+<p>
+  Control works!
+</p>
+
+<div class="form-group">
+  <input type="number" placeholder="Enter 1st day">
+  <input type="number" placeholder="Enter last day">
+  <input type="number" value="hrs" placeholder="Enter hrs/day" class="form-control" #setup>
+
+  <button type="button" class="btn btn-primary"
+          (click)="numberGen(setup.value)">
+        Calculate</button>
+
+</div>
