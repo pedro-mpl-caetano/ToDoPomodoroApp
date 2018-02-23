@@ -7,20 +7,49 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ControlComponent implements OnInit {
 
-  //@Output() generateOrder = new EventEmitter<number>();
+  @Output() newTotal = new EventEmitter<number>();
 
-  nb : number;
+  public firstDay : number = 1;
+  secondDay : number = 7;
+  hrsPerDay : number = 8;
+  totalHours : number = 0;
 
-  constructor() { }
-
-  numberGen1(n : number){
-    //this.generateOrder.emit(2);
-    //console.log("This button works!" + generateOrder);
-    console.log("number = " + n);
+  constructor() {
+    this.calculateTotal();
+    this.newTotal.emit(this.totalHours);
   }
 
-  numberGen(r : number){
-    console.log("a serio:" + r);
+  getFirstDay(){
+    return this.firstDay;
+  }
+
+  getSecondday(){
+    return this.secondDay;
+  }
+
+  getHrsPerDay(){
+    return this.hrsPerDay;
+  }
+
+  getTotalHours(){
+    return this.totalHours;
+  }
+
+  calculateTotal(){
+    this.totalHours = ( this.secondDay - this.firstDay + 1 ) * this.hrsPerDay;
+  }
+
+  numberGen(fDay : number, sDay : number, hrsDay : number){
+    if(fDay != 0)
+      this.firstDay = fDay;
+    if(sDay != 0)
+      this.secondDay = sDay;
+    if(hrsDay != 0)
+      this.hrsPerDay = hrsDay;
+
+    this.calculateTotal();
+    this.newTotal.emit(this.totalHours);
+    console.log("values: " + this.firstDay + ", " + this.secondDay + ", " + this.hrsPerDay);
   }
 
   ngOnInit() {

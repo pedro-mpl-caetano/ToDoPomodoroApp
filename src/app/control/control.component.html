@@ -1,14 +1,17 @@
-<p>
-  Control works!
-</p>
-
-<div class="form-group">
-  <input type="number" placeholder="Enter 1st day">
-  <input type="number" placeholder="Enter last day">
-  <input type="number" value="hrs" placeholder="Enter hrs/day" class="form-control" #setup>
-
-  <button type="button" class="btn btn-primary"
-          (click)="numberGen(setup.value)">
-        Calculate</button>
-
+<div>
+  <h2>Control Parameters</h2>
+  <div class="form-group">
+      <p>Change Parameters:</p>
+      <input type="number" placeholder="Enter 1st day" #firstDay>
+      <input type="number" placeholder="Enter last day" #secondDay>
+      <input type="number" value="hrs" placeholder="Enter hrs/day" #hrsPerDay>
+    
+      <button type="button" class="btn btn-primary"
+              (click)="numberGen(firstDay.value, secondDay.value, hrsPerDay.value)">
+            Calculate</button>
+    </div>
+  <p>First Day: {{getFirstDay()}}</p>
+  <p>Second Day: {{getSecondday()}}</p>
+  <p>Hours per Day: {{getHrsPerDay()}}</p>
+  <p>Total Available Hours: {{getTotalHours()}}</p>
 </div>
